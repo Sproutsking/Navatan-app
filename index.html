@@ -871,7 +871,7 @@
         .build-steps {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .step {
@@ -896,8 +896,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 50%;
@@ -907,7 +907,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
         }
 
         .form-label {
@@ -915,7 +915,7 @@
             margin-bottom: 8px;
             font-weight: 700;
             color: var(--text-primary);
-            font-size: 1rem;
+            font-size: 20px;
         }
 
         .form-input, .form-select {
@@ -967,12 +967,12 @@
 
         .plan-selection {
             display: grid;
-            gap: 1.5rem;
+            gap: 15px;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
 
         .plan-option {
-            padding: 2rem;
+            padding: 15px;
             background: var(--surface);
             border: 2px solid var(--border);
             border-radius: 20px;
@@ -1033,7 +1033,7 @@
         }
 
         .edit-header {
-            padding: 2rem;
+            padding: 15px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -1061,7 +1061,7 @@
 
         .chat-messages {
             flex: 1;
-            padding: 2rem;
+            padding: 15px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -1069,7 +1069,7 @@
         }
 
         .message {
-            padding: 1rem 1.5rem;
+            padding: 12px 15px;
             border-radius: 16px;
             max-width: 85%;
         }
@@ -1087,18 +1087,18 @@
         }
 
         .chat-input {
-            padding: 2rem;
+            padding: 12px 15px;
             border-top: 1px solid var(--border);
         }
 
         .input-group {
             display: flex;
-            gap: 1rem;
+            gap: 12px;
         }
 
         .chat-input-field {
             flex: 1;
-            padding: 1rem 1.5rem;
+            padding: 12px 15px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
@@ -1108,7 +1108,7 @@
         }
 
         .send-btn {
-            padding: 1rem 1.5rem;
+            padding: 10px 12px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
@@ -1174,6 +1174,7 @@
             .modal-overlay {
                 top: 50px;
                 margin-bottom: 86px;
+            }
 
             .modal {
                 top: 50px;
@@ -1181,7 +1182,9 @@
                 padding: 14px;
                 width: 90%;
             }
-
+                .form-label {
+                    font-size: 12px;
+                }
             .sub-header {
                 z-index: 1100;
                 padding: 0 1.5rem;
