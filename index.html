@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteForge AI - Revolutionary Website Builder</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #000000;
+            --bg-tertiary: #1a1a1a;
+            --surface: #1e1e1e;
+            --surface-elevated: #262626;
+            --surface-hover: #2a2a2a;
+            
+            --text-primary: #ffffff;
+            --text-secondary: #d4d4d8;
+            --text-muted: #71717a;
+            
+            --border: #27272a;
+            --border-light: #3f3f46;
+            
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.8);
+            --glow: 0 0 30px rgba(99, 102, 241, 0.4);
+            --glow-accent: 0 0 25px rgba(6, 182, 212, 0.3);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ADVANCED BACKGROUND SYSTEM */
+        .tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -10;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 65% 15%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                conic-gradient(from 180deg at 50% 50%, rgba(99, 102, 241, 0.05) 0deg, transparent 60deg, rgba(139, 92, 246, 0.05) 120deg, transparent 180deg),
+                linear-gradient(135deg, #0a0a0a 0%, #0f0f0f 50%, #1a1a1a 100%);
+        }
+
+        .neural-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -9;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        .quantum-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -8;
+        }
+
+        .quantum-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: quantumFloat 8s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        @keyframes quantumFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1) rotate(0deg); 
+                opacity: 0.8; 
+            }
+            25% { 
+                transform: translateY(-30px) scale(1.3) rotate(90deg); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: translateY(-15px) scale(0.8) rotate(180deg); 
+                opacity: 0.6; 
+            }
+            75% { 
+                transform: translateY(-40px) scale(1.1) rotate(270deg); 
+                opacity: 1; 
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* NEXT-LEVEL SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 320px;
+            height: 100vh;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(30px);
+            border-right: 1px solid var(--border);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sidebar-header {
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            background: black;
+        }
+
+        .sidebar-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background:black;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--glow);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% { box-shadow: var(--glow); }
+            100% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+        }
+
+        .nav {
+            flex: 1;
+            padding: 10px 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+
+        .nav::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .nav::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        .nav-section {
+            gap: 5px;
+            display: flex;
+            padding-left: 12px;
+            padding-right: 12px;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        .nav-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            padding: 0 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            border: 1px solid #444444;
+            position: relative;
+            background: #1d1d1d;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 60%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 0 8px 8px 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .nav-item:hover::before {
+            width: 4px;
+        }
+
+        .nav-item.active {
+            background: rgb(0, 0, 61);
+            color: white;
+            border: 1px solid blue;
+            box-shadow: inset 0 0 30px rgba(99, 102, 241, 0.1);
+        }
+
+        .nav-item.active::before {
+            width: 4px;
+        }
+
+        .nav-icon {
+            font-size: 1.3rem;
+            width: 28px;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav-badge {
+            background: linear-gradient(135deg, var(--error), #dc2626);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            margin-left: auto;
+            min-width: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        /* PREMIUM FIXED SUB-HEADER */
+        .sub-header {
+            position: fixed;
+            top: 0;
+            left: 320px;
+            right: 0;
+            height: 57px;
+            background: rgba(3, 3, 3, 0.95);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--border);
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sub-header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .sub-header-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: blue;
+            letter-spacing: -0.02em;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-separator {
+            width: 4px;
+            height: 4px;
+            background: var(--text-muted);
+            border-radius: 50%;
+        }
+
+        .sub-header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--surface);
+            border: 1px solid #444444;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
+            background: var(--surface-hover);
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ENHANCED BOTTOM NAVIGATION */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 4px;
+            height: 80px;
+            background: black;
+            backdrop-filter: blur(30px);
+            border-top: 1px solid var(--border);
+            z-index: 100;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .bottom-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .bottom-nav-items {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: space-around;
+            padding: 12px;
+            gap: 5px;
+        }
+
+        .bottom-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.75rem;
+            font-weight: 600;
+            position: relative;
+            border-radius: 16px;
+            border: 1px solid #4444;
+            background: #0c0c0c;
+        }
+
+        .bottom-nav-item:hover,
+        .bottom-nav-item.active {
+            color: white;
+            background: rgb(0, 0, 61);
+            border: 1px solid blue;
+        }
+
+        .bottom-nav-item .nav-icon {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .bottom-nav-item.active .nav-icon {
+            transform: scale(1.1);
+        }
+
+        .bottom-nav-item .nav-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            transform: translate(50%, -50%);
+            font-size: 0.6rem;
+            padding: 0.2rem 0.4rem;
+            min-width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main {
+            margin-left: 320px;
+            margin-top: 57px;
+            min-height: calc(100vh - 80px);
+            /* padding: 3rem; */
+            position: relative;
+        }
+
+        .content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* ADVANCED SECTIONS */
+        .section {
+            display: none;
+            opacity: 0;
+            /* transform: translateY(20px); */
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.active {
+            display: block;
+            opacity: 1;
+            /* transform: translateY(0); */
+        }
+
+        /* REVOLUTIONARY TAB SYSTEM */
+        .tabs {
+            display: flex;
+            gap: 2%;
+            overflow-x: auto;
+            scrollbar-width: none;
+            position: relative;
+            padding: 5px;
+            padding-left: 20%;
+            padding-right: 20%;
+            background: #0000009c;
+            border-bottom: 1px solid #444444;
+        }
+
+        .tabs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.3;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px 16px;
+            background: #00000062;
+            border: 1px solid #4444;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .tab:hover::before {
+            left: 100%;
+        }
+
+        .tab:hover {
+            background: var(--surface-hover);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, black, blue);
+            border: 1px solid blue;
+            color: white;
+            box-shadow: var(--glow);
+        }
+
+        .tab-content {
+            padding: 12px;
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* PREMIUM CARDS */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 0.5;
+        }
+
+        /* ADVANCED GRID SYSTEM */
+        .cards-grid {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .cards-grid .card {
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--border);
+            border-radius: 32px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        
+        .notification-grid {
+            padding: 14px;
+        }
+        #profile .card {
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--border);
+            border-radius: 32px;
+            padding: 15px;
+            margin-bottom: 12px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        #settings .balel-card {
+            border: 1px solid #444444;
+        }
+        .notification-grid .card {
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--border);
+            border-radius: 32px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        /* NEXT-GENERATION PLAN CARDS */
+        .plan-card {
+            background: rgba(14, 13, 13, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid #444444;
+            border-radius: 30px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: 0.8s;
+        }
+
+        .plan-card:hover::before {
+            left: 100%;
+        }
+
+        .plan-card.popular {
+            border-color: var(--primary);
+            position: relative;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .plan-card.popular::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            border-radius: 0 32px 0 24px;
+            letter-spacing: 1px;
+            box-shadow: var(--glow);
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .plan-price {
+            font-size: 32px;
+            font-weight: 1000;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -0.05em;
+        }
+
+        .plan-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-weight: 500;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 900;
+            font-size: 1.2rem;
+            width: 24px;
+            height: 24px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ADVANCED BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            text-decoration: none;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            box-shadow: var(--glow), var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* BUILD WIZARD MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border-light);
+            border-radius: 32px;
+            padding: 4rem;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 90%;
+            position: relative;
+            transform: scale(0.9) rotateX(10deg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) rotateX(0deg);
+        }
+
+        /* BUILD STEPS WIZARD */
+        .build-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: none;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s ease;
+        }
+
+        .step.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .domain-search {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .domain-results {
+            margin-top: 1.5rem;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .domain-option {
+            padding: 1rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .domain-option:hover,
+        .domain-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .plan-selection {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .plan-option {
+            padding: 2rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .plan-option:hover,
+        .plan-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            gap: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--surface);
+            border-radius: 3px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* SITE EDITING INTERFACE */
+        .edit-interface {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 450px;
+            height: 100vh;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(30px);
+            border-left: 1px solid var(--border);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edit-interface.active {
+            transform: translateX(0);
+        }
+
+        .edit-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .edit-close {
+            width: 40px;
+            height: 40px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .edit-close:hover {
+            background: var(--surface-hover);
+            color: var(--error);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            max-width: 85%;
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            align-self: flex-end;
+        }
+
+        .message.ai {
+            background: var(--surface);
+            color: var(--text-primary);
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input-field {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-family: inherit;
+            resize: none;
+        }
+
+        .send-btn {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 300px;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sub-header {
+                left: 0;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .bottom-nav {
+                display: block;
+            }
+
+            .main {
+                padding-bottom: 70px;
+            }
+
+            .edit-interface {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding-bottom: 90px;
+            }
+
+            .tab-content {
+                padding: 14px;
+            }
+
+            .cards-grid {
+                padding: 14px;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .plan-card {
+                padding: 2rem;
+            }
+
+            .plan-price {
+                font-size: 3rem;
+            }
+
+            .modal {
+                padding: 2.5rem;
+                width: 95%;
+            }
+
+            .sub-header {
+                padding: 0 1.5rem;
+            }
+
+            .sub-header-title {
+                font-size: 1.25rem;
+            }
+            .form-label {
+                margin-left: 10px;
+                text-align: left;
+            }
+        }
+
+        /* UTILITY CLASSES */
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: 1rem; }
+    </style>
+</head>
+<body>
+    <!-- ADVANCED BACKGROUND SYSTEM -->
+    <div class="tech-bg">
+        <canvas id="bg-canvas"></canvas>
+        <div class="neural-grid"></div>
+        <div class="quantum-particles" id="quantum-particles"></div>
+    </div>
+
+    <!-- NEXT-LEVEL SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <span>SiteForge AI</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Create</div>
+                <div class="nav-item active" data-section="build">
+                    <span class="nav-icon">🚀</span>
+                    <span>Build Website</span>
+                </div>
+                <div class="nav-item" data-section="sites">
+                    <span class="nav-icon">🌐</span>
+                    <span>My Sites</span>
+                    <span class="nav-badge">3</span>
+                </div>
+                <div class="nav-item" data-section="inspiration">
+                    <span class="nav-icon">✨</span>
+                    <span>AI Gallery</span>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Manage</div>
+                <div class="nav-item" data-section="analytics">
+                    <span class="nav-icon">📊</span>
+                    <span>Analytics</span>
+                </div>
+                <div class="nav-item" data-section="domains">
+                    <span class="nav-icon">🌍</span>
+                    <span>Domains</span>
+                </div>
+                <div class="nav-item" data-section="notifications">
+                    <span class="nav-icon">🔔</span>
+                    <span>Notifications</span>
+                    <span class="nav-badge">7</span>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Explore</div>
+                <div class="nav-item" data-section="trends">
+                    <span class="nav-icon">📈</span>
+                    <span>Tech Trends</span>
+                </div>
+                <div class="nav-item" data-section="account">
+                    <span class="nav-icon">👤</span>
+                    <span>Account</span>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- PREMIUM FIXED SUB-HEADER -->
+    <header class="sub-header">
+        <div class="sub-header-left">
+            <h1 class="sub-header-title">Build Website</h1>
+        </div>
+        <div class="sub-header-actions">
+            <div class="action-btn" title="AI Assistant">🤖</div>
+            <div class="action-btn support-icon" title="Support"><i class="fa-solid fa-headset"></i></div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <div class="content">
+            <!-- BUILD SECTION -->
+            <section class="section active" id="build">
+                <div class="tabs">
+                    <button class="tab active" data-tab="builder">AI Builder</button>
+                    <button class="tab" data-tab="inspiration">Inspiration</button>
+                </div>
+
+                <!-- AI BUILDER TAB -->
+                <div class="tab-content active" id="builder">
+                    <div class="card">
+                        <div class="cards-grid">
+                            <div class="plan-card" data-plan="basic" data-price="100">
+                                <div class="plan-name">Basic</div>
+                                <div class="plan-price">$100</div>
+                                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Perfect for small businesses</p>
+                                <ul class="plan-features">
+                                    <li>Landing Page + About</li>
+                                    <li>Contact Form</li>
+                                    <li>Mobile Responsive</li>
+                                    <li>SSL Certificate</li>
+                                    <li>1 Year Support</li>
+                                    <li>Basic SEO Setup</li>
+                                </ul>
+                                <button class="btn btn-outline plan-select">Select & Build</button>
+                            </div>
+                            
+                            <div class="plan-card popular" data-plan="premium" data-price="250">
+                                <div class="plan-name">Premium</div>
+                                <div class="plan-price">$250</div>
+                                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Best for growing businesses</p>
+                                <ul class="plan-features">
+                                    <li>Everything in Basic</li>
+                                    <li>Blog System</li>
+                                    <li>Analytics Dashboard</li>
+                                    <li>Advanced SEO</li>
+                                    <li>Priority Support</li>
+                                    <li>Custom Integrations</li>
+                                </ul>
+                                <button class="btn plan-select">Select & Build</button>
+                            </div>
+                            
+                            <div class="plan-card" data-plan="enterprise" data-price="500">
+                                <div class="plan-name">Enterprise</div>
+                                <div class="plan-price">$500</div>
+                                <p style="color: var(--text-secondary); margin-bottom: 2rem;">For large organizations</p>
+                                <ul class="plan-features">
+                                    <li>Everything in Premium</li>
+                                    <li>Custom Backend</li>
+                                    <li>API Access</li>
+                                    <li>Database Management</li>
+                                    <li>24/7 Support</li>
+                                    <li>White-label Solution</li>
+                                </ul>
+                                <button class="btn btn-outline plan-select">Select & Build</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSPIRATION TAB -->
+                <div class="tab-content" id="inspiration">
+                    <div class="card">
+                        
+                        <div class="cards-grid">
+                            <div class="card" style="padding: 0; overflow: hidden; cursor: pointer;" onclick="useTemplate('tech-startup')">
+                                <div style="height: 250px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative;">
+                                    🚀
+                                    <div style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; color: white;">Tech Startup</div>
+                                </div>
+                                <div style="padding: 2rem;">
+                                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Modern SaaS Platform</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Clean, professional design with conversion-focused layout</p>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Landing Page</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Pricing</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Dashboard</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card" style="padding: 0; overflow: hidden; cursor: pointer;" onclick="useTemplate('ecommerce')">
+                                <div style="height: 250px; background: linear-gradient(135deg, var(--secondary), var(--accent)); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative;">
+                                    🛍️
+                                    <div style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; color: white;">E-commerce</div>
+                                </div>
+                                <div style="padding: 2rem;">
+                                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Fashion Store</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Beautiful product showcase with shopping cart integration</p>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Shop</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Cart</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Checkout</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card" style="padding: 0; overflow: hidden; cursor: pointer;" onclick="useTemplate('portfolio')">
+                                <div style="height: 250px; background: linear-gradient(135deg, var(--accent), var(--success)); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative;">
+                                    🎨
+                                    <div style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; color: white;">Portfolio</div>
+                                </div>
+                                <div style="padding: 2rem;">
+                                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Creative Agency</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Stunning visual portfolio with case studies</p>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Gallery</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Case Studies</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Team</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card" style="padding: 0; overflow: hidden; cursor: pointer;" onclick="useTemplate('restaurant')">
+                                <div style="height: 250px; background: linear-gradient(135deg, var(--warning), var(--error)); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative;">
+                                    🍽️
+                                    <div style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; color: white;">Restaurant</div>
+                                </div>
+                                <div style="padding: 2rem;">
+                                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Fine Dining</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Elegant restaurant site with menu and reservations</p>
+                                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Menu</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Reservations</span>
+                                        <span style="background: var(--surface); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">Events</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MY SITES SECTION -->
+            <section class="section" id="sites">
+                <div class="flex items-center justify-between mb-2">
+                    <button class="btn" style="margin: 10px;">+ Create New Site</button>
+                </div>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div style="height: 150px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🚀</div>
+                        <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">TechCorp Solutions</h3>
+                        <div style="display: inline-flex; align-items: center; background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 600;">
+                            <span style="width: 8px; height: 8px; background: var(--success); border-radius: 50%; margin-right: 0.75rem;"></span>
+                            Live
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">techcorp.com • Premium Plan</p>
+                        <div class="flex gap-1">
+                            <button class="btn btn-outline" style="flex: 1;" onclick="editSite('TechCorp Solutions')">✏️ Edit</button>
+                            <button class="btn" style="flex: 1;">🌐 Visit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="height: 150px; background: linear-gradient(135deg, var(--secondary), var(--accent)); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">💼</div>
+                        <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Creative Agency</h3>
+                        <div style="display: inline-flex; align-items: center; background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 600;">
+                            <span style="width: 8px; height: 8px; background: var(--success); border-radius: 50%; margin-right: 0.75rem;"></span>
+                            Live
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">agency.io • Enterprise Plan</p>
+                        <div class="flex gap-1">
+                            <button class="btn btn-outline" style="flex: 1;" onclick="editSite('Creative Agency')">✏️ Edit</button>
+                            <button class="btn" style="flex: 1;">🌐 Visit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="height: 150px; background: linear-gradient(135deg, var(--warning), var(--error)); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🏗️</div>
+                        <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">StartupX</h3>
+                        <div style="display: inline-flex; align-items: center; background: rgba(245, 158, 11, 0.1); color: var(--warning); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 600;">
+                            <span style="width: 8px; height: 8px; background: var(--warning); border-radius: 50%; margin-right: 0.75rem; animation: pulse 2s infinite;"></span>
+                            Building
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">startupx.ai • Basic Plan</p>
+                        <div class="flex gap-1">
+                            <button class="btn btn-outline" style="flex: 1;">📊 View Progress</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NOTIFICATIONS SECTION -->
+            <section class="section" id="notifications">                
+                <div class="notification-grid" style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="card" style="border-left: 4px solid var(--success);">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 style="color: var(--success);">Website Deployed</h3>
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">2 hours ago</span>
+                        </div>
+                        <p style="color: var(--text-secondary);">Your website "TechCorp Solutions" is now live and receiving traffic!</p>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid var(--warning);">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 style="color: var(--warning);">Domain Expiry Warning</h3>
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">1 day ago</span>
+                        </div>
+                        <p style="color: var(--text-secondary);">Your domain "agency.io" expires in 30 days. Renew now to avoid interruption.</p>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid var(--primary);">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 style="color: var(--primary);">SSL Certificate Updated</h3>
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">3 days ago</span>
+                        </div>
+                        <p style="color: var(--text-secondary);">Security certificate has been renewed for Creative Agency website.</p>
+                    </div>
+                    
+                    <div class="card" style="border-left: 4px solid var(--accent);">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 style="color: var(--accent);">Analytics Report</h3>
+                            <span style="color: var(--text-muted); font-size: 0.8rem;">1 week ago</span>
+                        </div>
+                        <p style="color: var(--text-secondary);">Your websites received 2,547 visitors this week, up 23% from last week.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TECH TRENDS SECTION -->
+            <section class="section" id="trends">                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">🔬</div>
+                        <h3 style="margin-bottom: 0.5rem;">Quantum Computing Breakthrough</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">New quantum processor achieves 1000-qubit milestone for commercial applications</p>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">Quantum • Hardware • 2 days ago</span>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--success), var(--accent)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">🤖</div>
+                        <h3 style="margin-bottom: 0.5rem;">AI Model GPT-5 Released</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Next-generation AI offers enhanced reasoning and multimodal capabilities</p>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">AI • Machine Learning • 5 days ago</span>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--warning), var(--error)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">🌐</div>
+                        <h3 style="margin-bottom: 0.5rem;">Web3 Social Platform Launch</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Decentralized social network introduces blockchain-based data ownership</p>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">Web3 • Social • 1 week ago</span>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--secondary), var(--primary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">🥽</div>
+                        <h3 style="margin-bottom: 0.5rem;">AR/VR Innovation</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Revolutionary lightweight AR headset with holographic displays debuts</p>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">AR/VR • Hardware • 2 weeks ago</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCOUNT SECTION -->
+            <section class="section" id="account">
+                <div class="tabs">
+                    <button class="tab active" data-tab="profile">Profile</button>
+                    <button class="tab" data-tab="settings">Settings</button>
+                    <button class="tab" data-tab="billing">Billing</button>
+                </div>
+                
+                <div class="tab-content active" id="profile">
+                    <div class="card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👤</div>
+                            <div style="flex: 1;">
+                                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">John Doe</h2>
+                                <p style="color: var(--text-secondary);">john.doe@email.com</p>
+                                <p style="color: var(--primary); font-weight: 600; font-size: 0.9rem;">Premium Member</p>
+                            </div>
+                            <button class="btn btn-secondary">Edit Profile</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="margin-bottom: 15px;">Profile Information</h3>
+                        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-input" value="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" value="john.doe@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-input" value="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company</label>
+                                <input type="text" class="form-input" value="TechCorp Solutions">
+                            </div>
+                        </div>
+                        <div class="flex gap-1 mt-2">
+                            <button class="btn">Save Changes</button>
+                            <button class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="margin-bottom: 2rem;">Account Stats</h3>
+                        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                            <div class="text-center">
+                                <div style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">3</div>
+                                <p style="color: var(--text-secondary);">Active Sites</p>
+                            </div>
+                            <div class="text-center">
+                                <div style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">12</div>
+                                <p style="color: var(--text-secondary);">Total Builds</p>
+                            </div>
+                            <div class="text-center">
+                                <div style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">2.1K</div>
+                                <p style="color: var(--text-secondary);">Visitors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="settings">
+                    <div class="card">
+                        <h3 style="margin-bottom: 2rem;">Notification Settings</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <label class="balel-card" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--surface); border-radius: 12px; cursor: pointer;">
+                                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--primary);">
+                                <div>
+                                    <div style="font-weight: 600;">Email Notifications</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.9rem;">Deployment and security alerts</div>
+                                </div>
+                            </label>
+                            <label class="balel-card" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--surface); border-radius: 12px; cursor: pointer;">
+                                <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--primary);">
+                                <div>
+                                    <div style="font-weight: 600;">SMS Alerts</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.9rem;">Domain expiry warnings</div>
+                                </div>
+                            </label>
+                            <label class="balel-card" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--surface); border-radius: 12px; cursor: pointer;">
+                                <input type="checkbox" style="width: 18px; height: 18px; accent-color: var(--primary);">
+                                <div>
+                                    <div style="font-weight: 600;">Weekly Reports</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.9rem;">Analytics and performance data</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 style="margin-bottom: 2rem;">Security</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <button class="btn btn-secondary" style="justify-content: flex-start;">🔒 Change Password</button>
+                            <button class="btn btn-secondary" style="justify-content: flex-start;">🔐 Two-Factor Auth</button>
+                            <button class="btn btn-secondary" style="justify-content: flex-start;">📥 Download Data</button>
+                            <button class="btn btn-secondary" style="justify-content: flex-start; color: var(--error); border-color: var(--error);">🗑️ Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="billing">
+                    <div class="card">
+                        <h3 style="margin-bottom: 2rem;">Current Plan</h3>
+                        <div style="padding: 2rem; background: var(--surface); border-radius: 16px; border: 1px solid var(--primary);">
+                            <div class="flex items-center justify-between mb-1">
+                                <h4 style="font-size: 1.25rem; font-weight: 700;">Premium Plan</h4>
+                                <span style="background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Active</span>
+                            </div>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;">$100/year • Renews automatically</p>
+                            <div class="flex gap-1">
+                                <button class="btn btn-outline">Change Plan</button>
+                                <button class="btn btn-secondary">Manage Billing</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ENHANCED BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-items">
+            <div class="bottom-nav-item active" data-section="build">
+                <span class="nav-icon">🚀</span>
+                <span>Build</span>
+            </div>
+            <div class="bottom-nav-item" data-section="sites">
+                <span class="nav-icon">🌐</span>
+                <span>Sites</span>
+                <span class="nav-badge">3</span>
+            </div>
+            <div class="bottom-nav-item" data-section="notifications">
+                <span class="nav-icon">🔔</span>
+                <span>Alerts</span>
+                <span class="nav-badge">7</span>
+            </div>
+            <div class="bottom-nav-item" data-section="trends">
+                <span class="nav-icon">📈</span>
+                <span>Trends</span>
+            </div>
+            <div class="bottom-nav-item" data-section="account">
+                <span class="nav-icon">👤</span>
+                <span>Account</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BUILD WIZARD MODAL -->
+    <div class="modal-overlay" id="build-wizard">
+        <div class="modal">
+            <div class="build-steps">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 20%;"></div>
+                </div>
+
+                <!-- Step 1: Company Info -->
+                <div class="step active" id="step-1">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Tell us about your business</h2>
+                        <p style="color: var(--text-secondary);">Help us understand what kind of website you need</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Company Name *</label>
+                        <input type="text" class="form-input" id="company-name" placeholder="Enter your company name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Industry *</label>
+                        <select class="form-select" id="industry">
+                            <option>Technology & Software</option>
+                            <option>E-commerce & Retail</option>
+                            <option>Professional Services</option>
+                            <option>Healthcare & Medical</option>
+                            <option>Food & Restaurant</option>
+                            <option>Creative & Design</option>
+                            <option>Education</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tell us about your business</label>
+                        <textarea class="form-input" rows="4" id="business-description" placeholder="Describe what your company does, your target audience, and what you want to achieve with your website..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 2: Domain Selection -->
+                <div class="step" id="step-2">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Choose your domain</h2>
+                        <p style="color: var(--text-secondary);">Secure the perfect web address for your business</p>
+                    </div>
+                    <div class="domain-search">
+                        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                            <input type="text" class="form-input" id="domain-search" placeholder="Search for domain name">
+                        </div>
+                        <button class="btn" onclick="searchDomains()">Search</button>
+                    </div>
+                    <div class="domain-results" id="domain-results" style="display: none;">
+                        <!-- Domain options will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Plan Selection -->
+                <div class="step" id="step-3">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Confirm your plan</h2>
+                        <p style="color: var(--text-secondary);">Your selected plan and final pricing</p>
+                    </div>
+                    <div class="plan-selection" id="selected-plan-display">
+                        <!-- Selected plan will be shown here -->
+                    </div>
+                </div>
+
+                <!-- Step 4: Payment -->
+                <div class="step" id="step-4">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Payment details</h2>
+                        <p style="color: var(--text-secondary);">Secure payment to start building your website</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Card Number *</label>
+                        <input type="text" class="form-input" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Expiry Date *</label>
+                            <input type="text" class="form-input" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">CVV *</label>
+                            <input type="text" class="form-input" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Building -->
+                <div class="step" id="step-5">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Building your website</h2>
+                        <p style="color: var(--text-secondary);">Our AI is creating your custom website...</p>
+                    </div>
+                    <div style="text-align: center; padding: 3rem 0;">
+                        <div style="width: 100px; height: 100px; margin: 0 auto 2rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; animation: spin 2s linear infinite;">
+                            🚀
+                        </div>
+                        <div id="build-status" style="font-size: 1.1rem; color: var(--text-secondary);">
+                            Analyzing your requirements...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn-outline" id="prev-btn" onclick="prevStep()" style="display: none;">Previous</button>
+                    <button class="btn" id="next-btn" onclick="nextStep()">Next Step</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SITE EDITING INTERFACE -->
+    <div class="edit-interface" id="edit-interface">
+        <div class="edit-header">
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Edit Website</h3>
+            <button class="edit-close" onclick="closeEditInterface()">✕</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message ai">
+                <strong>AI Assistant:</strong><br>
+                Hi! I'm here to help you edit your website. You can ask me to:
+                <br>• Change colors, fonts, or layout
+                <br>• Update content and text
+                <br>• Add new sections or features
+                <br>• Modify images and media
+                <br><br>What would you like to change?
+            </div>
+        </div>
+        <div class="chat-input">
+            <div class="input-group">
+                <textarea class="chat-input-field" placeholder="Ask me to make changes to your website..." rows="3" id="chat-input" onkeydown="handleChatKeydown(event)"></textarea>
+                <button class="send-btn" onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedPlan = null;
+        let selectedDomain = null;
+        let totalSteps = 5;
+
+        // Initialize quantum particles
+        function initQuantumParticles() {
+            const container = document.getElementById('quantum-particles');
+            for (let i = 0; i < 50; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'quantum-dot';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.top = Math.random() * 100 + '%';
+                dot.style.animationDelay = Math.random() * 8 + 's';
+                dot.style.animationDuration = (8 + Math.random() * 4) + 's';
+                container.appendChild(dot);
+            }
+        }
+
+        // Navigation system
+        function switchSection(sectionId) {
+            // Update navigation states
+            document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll(`[data-section="${sectionId}"]`).forEach(item => {
+                item.classList.add('active');
+            });
+
+            // Update sections with smooth transition
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            setTimeout(() => {
+                document.getElementById(sectionId).classList.add('active');
+            }, 100);
+
+            // Update header titles
+            const titles = {
+                build: 'Build Website',
+                sites: 'My Websites',
+                notifications: 'Notifications',
+                trends: 'Tech Trends',
+                account: 'Account Settings',
+                inspiration: 'AI Gallery',
+                analytics: 'Analytics',
+                domains: 'Domain Management'
+            };
+            
+            document.querySelector('.sub-header-title').textContent = titles[sectionId] || 'SiteForge AI';
+            
+            // Update breadcrumb
+            const breadcrumb = document.querySelector('.breadcrumb span:last-child');
+            breadcrumb.textContent = titles[sectionId] || 'Dashboard';
+        }
+
+        // Tab switching
+        function switchTab(tabId, tabElement) {
+            const section = tabElement.closest('.section');
+            
+            section.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            tabElement.classList.add('active');
+
+            section.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            section.querySelector(`#${tabId}`).classList.add('active');
+        }
+
+        // Plan selection
+        function selectPlan(planElement) {
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            planElement.classList.add('selected');
+            selectedPlan = {
+                name: planElement.dataset.plan,
+                price: planElement.dataset.price,
+                element: planElement
+            };
+            
+            showBuildWizard();
+        }
+
+        // Build wizard functions
+        function showBuildWizard() {
+            document.getElementById('build-wizard').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBuildWizard() {
+            document.getElementById('build-wizard').classList.remove('active');
+            document.body.style.overflow = '';
+            currentStep = 1;
+            updateProgress();
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                if (validateCurrentStep()) {
+                    document.getElementById(`step-${currentStep}`).classList.remove('active');
+                    currentStep++;
+                    document.getElementById(`step-${currentStep}`).classList.add('active');
+                    updateProgress();
+                    updateNavigation();
+                    
+                    if (currentStep === 3) {
+                        displaySelectedPlan();
+                    }
+                    
+                    if (currentStep === 5) {
+                        startBuildProcess();
+                    }
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+                updateProgress();
+                updateNavigation();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+            
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+            } else if (currentStep === 4) {
+                nextBtn.textContent = 'Complete Payment';
+            } else {
+                nextBtn.textContent = 'Next Step';
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        function validateCurrentStep() {
+            switch (currentStep) {
+                case 1:
+                    const companyName = document.getElementById('company-name').value.trim();
+                    if (!companyName) {
+                        showNotification('Please enter your company name', 'error');
+                        return false;
+                    }
+                    return true;
+                case 2:
+                    if (!selectedDomain) {
+                        showNotification('Please select a domain', 'error');
+                        return false;
+                    }
+                    return true;
+                case 3:
+                    return true;
+                case 4:
+                    // Validate payment info (simplified)
+                    showNotification('Payment processed successfully!', 'success');
+                    return true;
+            }
+            return true;
+        }
+
+        // Domain search
+        function searchDomains() {
+            const query = document.getElementById('domain-search').value.trim();
+            if (!query) return;
+            
+            const resultsContainer = document.getElementById('domain-results');
+            resultsContainer.style.display = 'grid';
+            resultsContainer.innerHTML = `
+                <div class="domain-option" onclick="selectDomain(this, '${query}.com', 27)">
+                    <div style="font-weight: 700; font-size: 1.1rem;">${query}.com</div>
+                    <div style="color: var(--success); font-weight: 600;">$27/year</div>
+                </div>
+                <div class="domain-option" onclick="selectDomain(this, '${query}.io', 64)">
+                    <div style="font-weight: 700; font-size: 1.1rem;">${query}.io</div>
+                    <div style="color: var(--primary); font-weight: 600;">$64/year</div>
+                </div>
+                <div class="domain-option" onclick="selectDomain(this, '${query}.ai', 80)">
+                    <div style="font-weight: 700; font-size: 1.1rem;">${query}.ai</div>
+                    <div style="color: var(--secondary); font-weight: 600;">$80/year</div>
+                </div>
+                <div class="domain-option" onclick="selectDomain(this, '${query}.tech', 12)">
+                    <div style="font-weight: 700; font-size: 1.1rem;">${query}.tech</div>
+                    <div style="color: var(--accent); font-weight: 600;">$12/year</div>
+                </div>
+            `;
+        }
+
+        function selectDomain(element, domain, price) {
+            document.querySelectorAll('.domain-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            selectedDomain = { domain, price };
+            showNotification(`${domain} selected!`, 'success');
+        }
+
+        function displaySelectedPlan() {
+            if (!selectedPlan) return;
+            
+            const container = document.getElementById('selected-plan-display');
+            const domainCost = selectedDomain ? selectedDomain.price : 0;
+            const totalCost = parseInt(selectedPlan.price) + domainCost;
+            
+            container.innerHTML = `
+                <div class="plan-option selected" style="max-width: 500px; margin: 0 auto;">
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; text-transform: capitalize;">${selectedPlan.name} Plan</h3>
+                    <div style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">${totalCost}</div>
+                    <div style="text-align: left; margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <span>${selectedPlan.name} Plan</span>
+                            <span>${selectedPlan.price}</span>
+                        </div>
+                        ${selectedDomain ? `
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <span>${selectedDomain.domain}</span>
+                            <span>${selectedDomain.price}</span>
+                        </div>` : ''}
+                        <div style="display: flex; justify-content: space-between; padding: 1rem 0; font-weight: 700; font-size: 1.1rem;">
+                            <span>Total</span>
+                            <span>${totalCost}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Build process simulation
+        function startBuildProcess() {
+            const messages = [
+                'Analyzing your requirements...',
+                'Selecting optimal design templates...',
+                'Generating custom content...',
+                'Optimizing for mobile devices...',
+                'Setting up hosting environment...',
+                'Configuring security features...',
+                'Final optimizations...',
+                'Website ready! 🎉'
+            ];
+            
+            let messageIndex = 0;
+            const statusElement = document.getElementById('build-status');
+            
+            const interval = setInterval(() => {
+                statusElement.textContent = messages[messageIndex];
+                messageIndex++;
+                
+                if (messageIndex >= messages.length) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        closeBuildWizard();
+                        showNotification('Your website has been created successfully!', 'success');
+                        addNewSiteToList();
+                    }, 2000);
+                }
+            }, 1500);
+        }
+
+        function addNewSiteToList() {
+            const companyName = document.getElementById('company-name').value.trim();
+            const sitesGrid = document.querySelector('#sites .cards-grid');
+            
+            const newSite = document.createElement('div');
+            newSite.className = 'card';
+            newSite.innerHTML = `
+                <div style="height: 150px; background: linear-gradient(135deg, var(--success), var(--accent)); border-radius: 16px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🌟</div>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">${companyName}</h3>
+                <div style="display: inline-flex; align-items: center; background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 600;">
+                    <span style="width: 8px; height: 8px; background: var(--success); border-radius: 50%; margin-right: 0.75rem;"></span>
+                    Live
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${companyName.toLowerCase().replace(/\s+/g, '')}.com • ${selectedPlan.name} Plan</p>
+                <div class="flex gap-1">
+                    <button class="btn btn-outline" style="flex: 1;" onclick="editSite('${companyName}')">✏️ Edit</button>
+                    <button class="btn" style="flex: 1;">🌐 Visit</button>
+                </div>
+            `;
+            
+            sitesGrid.insertBefore(newSite, sitesGrid.firstChild);
+            
+            // Update badge counts
+            document.querySelectorAll('[data-section="sites"] .nav-badge').forEach(badge => {
+                badge.textContent = parseInt(badge.textContent) + 1;
+            });
+        }
+
+        // Site editing interface
+        function editSite(siteName) {
+            document.getElementById('edit-interface').classList.add('active');
+            document.querySelector('.edit-header h3').textContent = `Edit ${siteName}`;
+            
+            // Add initial message
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML = `
+                <div class="message ai">
+                    <strong>AI Assistant:</strong><br>
+                    Hi! I'm ready to help you edit "${siteName}". You can ask me to:
+                    <br>• Change colors, fonts, or layout
+                    <br>• Update content and text  
+                    <br>• Add new sections or features
+                    <br>• Modify images and media
+                    <br><br>What would you like to change?
+                </div>
+            `;
+        }
+
+        function closeEditInterface() {
+            document.getElementById('edit-interface').classList.remove('active');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = `<strong>You:</strong><br>${message}`;
+            messagesContainer.appendChild(userMessage);
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message ai';
+                aiMessage.innerHTML = `<strong>AI Assistant:</strong><br>I understand you want to ${message.toLowerCase()}. I'm processing your request and will apply the changes to your website. This may take a moment...`;
+                messagesContainer.appendChild(aiMessage);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                setTimeout(() => {
+                    const confirmMessage = document.createElement('div');
+                    confirmMessage.className = 'message ai';
+                    confirmMessage.innerHTML = `<strong>AI Assistant:</strong><br>✅ Changes have been applied successfully! Your website has been updated. You can preview the changes or make additional modifications.`;
+                    messagesContainer.appendChild(confirmMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 2000);
+            }, 1000);
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChatKeydown(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendChatMessage();
+            }
+        }
+
+        // Template usage
+        function useTemplate(templateType) {
+            showNotification(`Using ${templateType} template as inspiration!`, 'success');
+            selectedPlan = { name: 'premium', price: '250' };
+            showBuildWizard();
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(30, 30, 30, 0.95);
+                backdrop-filter: blur(30px);
+                border: 1px solid var(--border-light);
+                border-radius: 16px;
+                padding: 1.5rem 2rem;
+                color: var(--text-primary);
+                z-index: 2000;
+                max-width: 400px;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: var(--shadow-lg);
+                border-left: 4px solid ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--error)' : 'var(--primary)'};
+            `;
+            
+            const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span style="font-size: 1.5rem;">${icon}</span>
+                    <span style="font-weight: 600;">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.5rem; margin-left: auto;">×</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 400);
+            }, 5000);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            initQuantumParticles();
+            
+            // Navigation event listeners
+            document.querySelectorAll('[data-section]').forEach(item => {
+                item.addEventListener('click', function() {
+                    switchSection(this.dataset.section);
+                });
+            });
+            
+            // Tab switching
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab, this);
+                });
+            });
+            
+            // Plan selection
+            document.querySelectorAll('.plan-select').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const planCard = this.closest('.plan-card');
+                    selectPlan(planCard);
+                });
+            });
+            
+            // Modal overlay click
+            document.getElementById('build-wizard').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeBuildWizard();
+                }
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeBuildWizard();
+                    closeEditInterface();
+                }
+            });
+            
+            // Welcome message
+            setTimeout(() => {
+                showNotification('Welcome to SiteForge AI! Create stunning websites with AI in minutes.', 'success');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
