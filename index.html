@@ -826,7 +826,7 @@
         /* BUILD WIZARD MODAL */
         .modal-overlay {
             position: fixed;
-            top: 50px;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
@@ -847,11 +847,10 @@
         }
 
         .modal {
-            top: 50px;
-            bottom: 90px;
             background: rgba(30, 30, 30, 0.98);
             backdrop-filter: blur(30px);
             border: 1px solid var(--border-light);
+            /* border-radius: 32px; */
             padding: 10px;
             max-width: 800px;
             max-height: 90vh;
@@ -871,7 +870,7 @@
         .build-steps {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .step {
@@ -889,15 +888,15 @@
 
         .step-header {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 2rem;
         }
 
         .step-number {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 50%;
@@ -907,7 +906,7 @@
         }
 
         .form-group {
-            /* margin-bottom: 20px; */
+            margin-bottom: 20px;
         }
 
         .form-label {
@@ -915,7 +914,7 @@
             margin-bottom: 8px;
             font-weight: 700;
             color: var(--text-primary);
-            font-size: 20px;
+            font-size: 1rem;
         }
 
         .form-input, .form-select {
@@ -927,7 +926,7 @@
             color: var(--text-primary);
             transition: all 0.3s ease;
             font-family: inherit;
-            font-size: 12px;
+            font-size: 1rem;
         }
 
         .form-input:focus, .form-select:focus {
@@ -967,12 +966,12 @@
 
         .plan-selection {
             display: grid;
-            gap: 15px;
+            gap: 1.5rem;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
 
         .plan-option {
-            padding: 15px;
+            padding: 2rem;
             background: var(--surface);
             border: 2px solid var(--border);
             border-radius: 20px;
@@ -1033,7 +1032,7 @@
         }
 
         .edit-header {
-            padding: 15px;
+            padding: 2rem;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -1061,7 +1060,7 @@
 
         .chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 2rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -1069,7 +1068,7 @@
         }
 
         .message {
-            padding: 12px 15px;
+            padding: 1rem 1.5rem;
             border-radius: 16px;
             max-width: 85%;
         }
@@ -1087,18 +1086,18 @@
         }
 
         .chat-input {
-            padding: 12px 15px;
+            padding: 2rem;
             border-top: 1px solid var(--border);
         }
 
         .input-group {
             display: flex;
-            gap: 12px;
+            gap: 1rem;
         }
 
         .chat-input-field {
             flex: 1;
-            padding: 12px 15px;
+            padding: 1rem 1.5rem;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
@@ -1108,7 +1107,7 @@
         }
 
         .send-btn {
-            padding: 10px 12px;
+            padding: 1rem 1.5rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
@@ -1171,22 +1170,13 @@
             .plan-price {
                 font-size: 20px;
             }
-            .modal-overlay {
-                top: 50px;
-                margin-bottom: 86px;
-            }
 
             .modal {
-                top: 50px;
-                bottom: 90px;
-                padding: 14px;
-                width: 90%;
+                padding: 2.5rem;
+                width: 95%;
             }
-                .form-label {
-                    font-size: 12px;
-                }
+
             .sub-header {
-                z-index: 1100;
                 padding: 0 1.5rem;
             }
 
@@ -1511,7 +1501,7 @@
 
             <!-- TECH TRENDS SECTION -->
             <section class="section" id="trends">                
-                <div class="cards-grid" style="padding: 10px;">
+                <div class="cards-grid">
                     <div class="card">
                         <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">🔬</div>
                         <h3 style="margin-bottom: 0.5rem;">Quantum Computing Breakthrough</h3>
@@ -1707,6 +1697,7 @@
                 <div class="step active" id="step-1">
                     <div class="step-header">
                         <div class="step-number">1</div>
+                        <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Tell us about your business</h2>
                         <p style="color: var(--text-secondary);">Help us understand what kind of website you need</p>
                     </div>
                     <div class="form-group">
