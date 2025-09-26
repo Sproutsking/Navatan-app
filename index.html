@@ -2675,6 +2675,311 @@
                 showNotification('Welcome to SiteForge AI! Create stunning websites with AI in minutes.', 'success');
             }, 1000);
         });
+
+         let currentStep = 1;
+        let totalSteps = 5;
+        let selectedPlan = null;
+        let selectedDomain = null;
+
+        // Plan selection
+        document.querySelectorAll('.plan-select').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const planCard = this.closest('.plan-card');
+                selectedPlan = {
+                    name: planCard.dataset.plan,
+                    price: planCard.dataset.price
+                };
+                
+                showModal();
+                showNotification(`${selectedPlan.name} plan selected!`, 'success');
+            });
+        });
+
+        function showModal() {
+            document.getElementById('buildModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('buildModal').classList.remove('active');
+            document.body.style.overflow = '';
+            resetWizard();
+        }
+
+        function resetWizard() {
+            currentStep = 1;
+            selectedDomain = null;
+            updateStep();
+            updateProgress();
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.value = '';
+            });
+            document.getElementById('domainResults').style.display = 'none';
+        }
+
+        function nextStep() {
+            if (!validateStep()) return;
+            
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStep();
+                updateProgress();
+                
+                if (currentStep === 3) {
+                    updatePlanSummary();
+                }
+                
+                if (currentStep === 5) {
+                    startBuildProcess();
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStep();
+                updateProgress();
+            }
+        }
+
+        function validateStep() {
+            switch(currentStep) {
+                case 1:
+                    const companyName = document.getElementById('companyName').value.trim();
+                    const industry = document.getElementById('industry').value;
+                    
+                    if (!companyName) {
+                        showNotification('Please enter your company name', 'error');
+                        return false;
+                    }
+                    if (!industry) {
+                        showNotification('Please select your industry', 'error');
+                        return false;
+                    }
+                    return true;
+                    
+                case 2:
+                    if (!selectedDomain) {
+                        showNotification('Please select a domain', 'error');
+                        return false;
+                    }
+                    return true;
+                    
+                case 3:
+                    return true;
+                    
+                case 4:
+                    const cardNumber = document.getElementById('cardNumber').value.trim();
+                    const expiry = document.getElementById('expiry').value.trim();
+                    const cvv = document.getElementById('cvv').value.trim();
+                    const cardHolder = document.getElementById('cardHolder').value.trim();
+                    
+                    if (!cardNumber || cardNumber.length < 15) {
+                        showNotification('Please enter a valid card number', 'error');
+                        return false;
+                    }
+                    if (!expiry || expiry.length < 5) {
+                        showNotification('Please enter expiry date', 'error');
+                        return false;
+                    }
+                    if (!cvv || cvv.length < 3) {
+                        showNotification('Please enter CVV', 'error');
+                        return false;
+                    }
+                    if (!cardHolder) {
+                        showNotification('Please enter cardholder name', 'error');
+                        return false;
+                    }
+                    
+                    showNotification('Payment processed successfully!', 'success');
+                    return true;
+            }
+            return true;
+        }
+
+        function updateStep() {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            
+            // Update navigation
+            document.getElementById('prevBtn').style.display = currentStep > 1 ? 'inline-flex' : 'none';
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = 'inline-flex';
+                nextBtn.textContent = currentStep === 4 ? 'Complete Payment' : 'Next Step';
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function searchDomains() {
+            const query = document.getElementById('domainSearch').value.trim();
+            if (!query) {
+                showNotification('Please enter a domain name to search', 'error');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('domainResults');
+            const gridDiv = document.getElementById('domainGrid');
+            
+            gridDiv.innerHTML = `
+                <div class="domain-option" onclick="selectDomain('${query}.com', 27)">
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">${query}.com</div>
+                    <div style="color: var(--success); font-weight: 600;">$27/year</div>
+                </div>
+                <div class="domain-option" onclick="selectDomain('${query}.io', 64)">
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">${query}.io</div>
+                    <div style="color: var(--primary); font-weight: 600;">$64/year</div>
+                </div>
+                <div class="domain-option" onclick="selectDomain('${query}.ai', 89)">
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">${query}.ai</div>
+                    <div style="color: var(--secondary); font-weight: 600;">$89/year</div>
+                </div>
+                <div class="domain-option" onclick="selectDomain('${query}.tech', 45)">
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">${query}.tech</div>
+                    <div style="color: var(--success); font-weight: 600;">$45/year</div>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        function selectDomain(domain, price) {
+            document.querySelectorAll('.domain-option').forEach(opt => {
+                opt.style.borderColor = 'var(--border)';
+                opt.style.background = 'var(--surface)';
+            });
+            
+            event.target.closest('.domain-option').style.borderColor = 'var(--primary)';
+            event.target.closest('.domain-option').style.background = 'rgba(99, 102, 241, 0.1)';
+            
+            selectedDomain = { domain, price };
+            showNotification(`${domain} selected!`, 'success');
+        }
+
+        function updatePlanSummary() {
+            const planPrice = parseInt(selectedPlan.price);
+            const domainPrice = selectedDomain ? selectedDomain.price : 0;
+            const totalPrice = planPrice + domainPrice;
+            
+            document.getElementById('selectedPlanName').textContent = `${selectedPlan.name} Plan`;
+            document.getElementById('totalPrice').textContent = `${totalPrice}`;
+            document.getElementById('planPrice').textContent = `${planPrice}`;
+            
+            if (selectedDomain) {
+                document.getElementById('domainLine').style.display = 'flex';
+                document.getElementById('selectedDomainName').textContent = selectedDomain.domain;
+                document.getElementById('domainPrice').textContent = `${selectedDomain.price}`;
+            }
+        }
+
+        function startBuildProcess() {
+            const messages = [
+                'Analyzing your requirements...',
+                'Selecting optimal design templates...',
+                'Generating custom content with AI...',
+                'Optimizing for mobile devices...',
+                'Setting up hosting environment...',
+                'Configuring security features...',
+                'Final optimizations and testing...',
+                'Website completed successfully!'
+            ];
+            
+            let index = 0;
+            const statusEl = document.getElementById('buildStatus');
+            
+            const interval = setInterval(() => {
+                if (index < messages.length) {
+                    statusEl.textContent = messages[index];
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById('successMessage').style.display = 'block';
+                    showNotification('Website created successfully!', 'success');
+                    setTimeout(() => {
+                        closeModal();
+                    }, 3000);
+                }
+            }, 1500);
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span>${type === 'success' ? '✓' : '⚠'}</span>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add domain option styles
+        const domainStyle = document.createElement('style');
+        domainStyle.textContent = `
+            .domain-option {
+                padding: 1.5rem;
+                background: var(--surface);
+                border: 2px solid var(--border);
+                border-radius: 12px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-align: center;
+            }
+            
+            .domain-option:hover {
+                border-color: var(--primary);
+                transform: translateY(-2px);
+            }
+        `;
+        document.head.appendChild(domainStyle);
+
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || '';
+            e.target.value = formattedValue;
+        });
+
+        // Format expiry input
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // Close modal on overlay click
+        document.getElementById('buildModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
